@@ -1,0 +1,17 @@
+DATA SET 1:
+ROOT
+|     dir3
+|     |     dir2
+|     |     file1
+|     |     file2
+|     dir1
+file1
+file2
+file3
+file4
+
+DATA SET 2:
+ROOT
+file1
+file2
+
