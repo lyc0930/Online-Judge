@@ -19,7 +19,7 @@ Codes of OJ
     - [4150 上机](http://bailian.openjudge.cn/practice/4150)
     - [4151 电影节](http://bailian.openjudge.cn/practice/4151)
     - [4152 最佳加法表达式](http://bailian.openjudge.cn/practice/4152)
-- [算法导论](https://202.38.86.171/)  
+- [USTC算法基础](https://202.38.86.171/)(Updating...)    
     - [1 a + b problem](https://202.38.86.171/problem/1)
     - [3 数组排序1](https://202.38.86.171/problem/3)
     - [4 数组排序2](https://202.38.86.171/problem/4)
