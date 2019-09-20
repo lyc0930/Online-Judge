@@ -46,7 +46,9 @@ int main()
 
     QuickSort(A, 0, n - 1);
 
-    for (i = n; i >= 0; i--)
+    // i = n; i >= 0; i -= count after print
+
+    for (i = n; i >= 0; i--) //Note: no need to do this loop step by step
     {
         currentNumber = A[0];
         count = 1;
