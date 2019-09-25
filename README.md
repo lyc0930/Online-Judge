@@ -1,5 +1,5 @@
-# Online-Judge  
-Codes of OJ  
+# Online-Judge
+Codes of OJ
 - [百炼](http://openjudge.cn/)
     - [1002 方便记忆的电话号码](http://bailian.openjudge.cn/practice/1002)
     - [1185 炮兵阵地](http://bailian.openjudge.cn/practice/1185)
@@ -19,13 +19,13 @@ Codes of OJ
     - [4150 上机](http://bailian.openjudge.cn/practice/4150)
     - [4151 电影节](http://bailian.openjudge.cn/practice/4151)
     - [4152 最佳加法表达式](http://bailian.openjudge.cn/practice/4152)
-- [USTC算法基础](https://202.38.86.171/)(Updating...)    
+- [USTC算法基础](https://202.38.86.171/)(Updating...)
     - [1 a + b problem](https://202.38.86.171/problem/1)
     - [3 数组排序1](https://202.38.86.171/problem/3)
     - [4 数组排序2](https://202.38.86.171/problem/4)
     - [H3-1 数字统计](https://202.38.86.171/problem/H3-1)
     - [H3-2 考试排名](https://202.38.86.171/problem/H3-2)
-- [洛谷](https://www.luogu.org/)  
+- [洛谷](https://www.luogu.org/)
     - [P1000 超级玛丽游戏](https://www.luogu.org/problem/P1000)
     - [P1002 过河卒](https://www.luogu.org/problem/P1002)
     - [P1003 铺地毯](https://www.luogu.org/problem/P1003)
@@ -38,6 +38,7 @@ Codes of OJ
     - [P1010 幂次方](https://www.luogu.org/problem/P1010)
     - [P1011 车站](https://www.luogu.org/problem/P1011)
     - [P1035 级数求和](https://www.luogu.org/problem/P1035)
+    - [P1055 ISBN号码](https://www.luogu.org/problem/P1055)
     - [P1085 不高兴的津津](https://www.luogu.org/problem/P1085)
     - [P1089 津津的储蓄计划](https://www.luogu.org/problem/P1089)
     - [P1421 小玉买文具](https://www.luogu.org/problem/P1421)

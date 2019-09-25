@@ -1,4 +1,4 @@
-// สýื้ลละ๒ 2
+// ๆ•ฐๅญ—ๆ’ๅบ2
 // notice that n <= 1000000, so there can be overflow in the stack
 
 #include <stdio.h>

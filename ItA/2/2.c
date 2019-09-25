@@ -1,4 +1,4 @@
-// สýื้ลละ๒ 1
+// ๆ•ฐๅญ—ๆ’ๅบ1
 #include <stdio.h>
 
 #define AND &&
