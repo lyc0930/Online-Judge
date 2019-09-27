@@ -41,6 +41,7 @@ Codes of OJ
     - [P1055 ISBN号码](https://www.luogu.org/problem/P1055)
     - [P1085 不高兴的津津](https://www.luogu.org/problem/P1085)
     - [P1089 津津的储蓄计划](https://www.luogu.org/problem/P1089)
+    - [P1308 统计单词数](https://www.luogu.org/problem/P11308)
     - [P1421 小玉买文具](https://www.luogu.org/problem/P1421)
     - [P1422 小玉家的电费](https://www.luogu.org/problem/P1422)
     - [P1425 小鱼的游泳时间](https://www.luogu.org/problem/P1425)
