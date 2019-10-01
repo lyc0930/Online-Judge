@@ -25,6 +25,8 @@ Codes of OJ
     - [4 数组排序2](https://202.38.86.171/problem/4)
     - [H3-1 数字统计](https://202.38.86.171/problem/H3-1)
     - [H3-2 考试排名](https://202.38.86.171/problem/H3-2)
+    - [H4-1 抽奖](https://202.38.86.171/problem/H4-1)
+    - [H4-1 数组排序](https://202.38.86.171/problem/H4-2)
 - [洛谷](https://www.luogu.org/)
     - [P1000 超级玛丽游戏](https://www.luogu.org/problem/P1000)
     - [P1002 过河卒](https://www.luogu.org/problem/P1002)
