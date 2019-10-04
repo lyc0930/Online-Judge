@@ -24,7 +24,7 @@ void Swap(type *a, type *b)
 
 int Parent(int i)
 {
-    return (i / 2);
+    return ((i - 1) / 2);
 }
 
 int Left(int i)
