@@ -1,5 +1,6 @@
 # Online-Judge
-Codes of OJ
+[![](https://img.shields.io/badge/OJ-@lyc0930-blueviolet.svg?style=flat)](https://github.com/lyc0930)
+
 - [百炼](http://openjudge.cn/)
     - [1002 方便记忆的电话号码](http://bailian.openjudge.cn/practice/1002)
     - [1185 炮兵阵地](http://bailian.openjudge.cn/practice/1185)
