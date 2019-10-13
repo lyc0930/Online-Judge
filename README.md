@@ -20,7 +20,8 @@
     - [4150 上机](http://bailian.openjudge.cn/practice/4150)
     - [4151 电影节](http://bailian.openjudge.cn/practice/4151)
     - [4152 最佳加法表达式](http://bailian.openjudge.cn/practice/4152)
-- [USTC算法基础](https://202.38.86.171/)(Updating...)
+
+- [USTC算法基础课程OJ](https://202.38.86.171/)(Updating...)
     - [1 a + b problem](https://202.38.86.171/problem/1)
     - [3 数组排序1](https://202.38.86.171/problem/3)
     - [4 数组排序2](https://202.38.86.171/problem/4)
@@ -32,6 +33,10 @@
     - [E1-2 股票](https://202.38.86.171/problem/E1-2)
     - [E1-3 弹幕游戏](https://202.38.86.171/problem/E1-3)
     - [E1-EX 银行卡](https://202.38.86.171/problem/E1-EX)
+
+- [力扣](https://leetcode-cn.com)
+    - [第158场周赛](https://leetcode-cn.com/contest/weekly-contest-158)(Problems: 2/4, Points: 7/19, Rank: 492 / 1715)
+
 - [洛谷](https://www.luogu.org/)
     - [P1000 超级玛丽游戏](https://www.luogu.org/problem/P1000)
     - [P1002 过河卒](https://www.luogu.org/problem/P1002)
