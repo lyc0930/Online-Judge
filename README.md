@@ -35,7 +35,7 @@
     - [E1-EX 银行卡](https://202.38.86.171/problem/E1-EX)
 
 - [力扣](https://leetcode-cn.com)
-    - [第158场周赛](https://leetcode-cn.com/contest/weekly-contest-158)(Problems: 2/4, Points: 7/19, Rank: 492 / 1715)
+    - [第158场周赛](https://leetcode-cn.com/contest/weekly-contest-158)(Problems: 2/4, Points: 7/19, Rank: 492/1715)
 
 - [洛谷](https://www.luogu.org/)
     - [P1000 超级玛丽游戏](https://www.luogu.org/problem/P1000)

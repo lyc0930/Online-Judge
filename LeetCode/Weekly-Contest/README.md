@@ -17,6 +17,10 @@ Accepted
 
 Undone
 
+动规忘得一塌糊涂。
+
 4. [#5225 最大相等频率](https://leetcode-cn.com/contest/weekly-contest-158/problems/maximum-equal-frequency/)
 
-Undoe
+Undone
+
+维护堆的思路有了，实现的不太好。
