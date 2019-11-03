@@ -5,7 +5,7 @@
 #include <time.h>
 #include <vector>
 #include <windows.h>
-#define N 5000
+#define N 2000000
 using namespace std;
 
 enum Command
@@ -30,11 +30,6 @@ int main()
         if (command == I)
         {
             k = rand() % N;
-            if (find(A.begin(), A.end(), k) == A.end())
-            {
-                i--;
-                continue;
-            }
             A.push_back(k);
             cout << "I " << k << endl;
         }

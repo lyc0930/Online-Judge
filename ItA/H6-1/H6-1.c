@@ -106,7 +106,8 @@ void RB_Insert(Tree *T, Node *z)
         else
             y->right = z; // Case 3：若z的值>=y所包含的值，则将z设为y的右孩子
     }
-
+    z->left = T->nil;
+    z->right = T->nil;
     z->color = RED;
     RB_Insert_Fixup(T, z);
 }
@@ -131,7 +132,7 @@ void RB_Insert_Fixup(Tree *T, Node *z)
                 if (z == z->parent->right) // Case 2：叔叔是黑色，且当前节点是右孩子
                 {
                     z = z->parent;
-                    Left_Rotate(T, z->parent);
+                    Left_Rotate(T, z);
                 }
                 // Case 3：叔叔是黑色，且当前节点是左孩子。
                 z->parent->color = BLACK;
@@ -164,22 +165,20 @@ void RB_Insert_Fixup(Tree *T, Node *z)
         }
     }
     T->root->color = BLACK; // 将根节点设为黑色
-    T->nil->size = 0;
 }
 
-// 返回红黑树T中子树x的最小结点
-Node *RB_Minimum(Tree *T, Node *x)
+/*
+    返回红黑树T中子树x的最小结点，并对沿途结点的size增/减量c
+    c的取值可能为：
+    0 简单查询；1 插入时沿途增量； -1 删除时沿途减量
+*/
+Node *RB_SeekMinimum(Tree *T, Node *x, int c)
 {
     while (x->left != T->nil)
+    {
+        x->size += c;
         x = x->left;
-    return x;
-}
-
-// 返回红黑树T中子树x的最大结点
-Node *RB_Maximum(Tree *T, Node *x)
-{
-    while (x->right != T->nil)
-        x = x->right;
+    }
     return x;
 }
 
@@ -196,8 +195,6 @@ void RB_Transplant(Tree *T, Node *u, Node *v)
             u->parent->right = v;
     }
     v->parent = u->parent;
-    if (v->parent != T->nil)
-        v->parent->size = v->parent->left->size + v->parent->right->size + 1;
 }
 
 void RB_Delete_Fixup(Tree *T, Node *x);
@@ -206,10 +203,9 @@ void RB_Delete_Fixup(Tree *T, Node *x);
 void RB_Delete(Tree *T, Node *z)
 {
     Node *y = z;
-    Node *x;
     enum Color y_original_color = y->color;
 
-    x = T->root;
+    Node *x = T->root;
     while (x != z) // Order Statistics
     {
         x->size--;
@@ -233,12 +229,12 @@ void RB_Delete(Tree *T, Node *z)
         }
         else
         {
-            y = RB_Minimum(T, z->right);
+            y = RB_SeekMinimum(T, z->right, -1);
             y_original_color = y->color;
             x = y->right;
-            if (y->parent == z)
+            if (y->parent == z) // y是z的右孩子且没有左孩子
                 x->parent = y;
-            else
+            else // 否则y一定是其父亲的左孩子且没有左孩子
             {
                 RB_Transplant(T, y, y->right);
                 y->right = z->right;
@@ -254,7 +250,7 @@ void RB_Delete(Tree *T, Node *z)
     if (y_original_color == BLACK)
         RB_Delete_Fixup(T, x);
     free(z);
-    T->nil->size = 0;
+
 }
 
 // 红黑树删除修正
@@ -370,7 +366,7 @@ Node *RB_Insert_Key(Tree *T, Type key)
     node->left = T->nil;
     node->right = T->nil;
     node->parent = NULL;
-    node->color = BLACK;
+    node->color = RED;
     node->size = 1;
 
     RB_Insert(T, node);
@@ -393,9 +389,6 @@ Node *OS_Select(Tree *T, int i)
     int r = node->left->size + 1;
     while (i != r)
     {
-        // if (node->left == T->nil)
-        //     printf("NIL! T->nil->size = %d\n", node->left->size);
-        // printf("Node %4d, rank = %d\n", node->key, r);
         if (i > r)
         {
             node = node->right;
@@ -413,9 +406,14 @@ void RB_Print(Tree *T, Node *node, int direction)
     if (node != T->nil)
     {
         if (direction == 0)
-            printf("%4d(B) is root, size = %3d\n", node->key, node->size);
+            printf("\033[40;37m%-3d\033[0m is ROOT, size = %3d\n", node->key, node->size);
         else
-            printf("%4d(%s) is %2d's %6s child, size = %3d\n", node->key, (node->color == RED) ? "R" : "B", node->parent->key, direction == 1 ? "right" : "left", node->size);
+        {
+            if (node->color == RED)
+                printf("\033[41;37m%-3d\033[0mis %3d's %6s child, size = %3d\n", node->key, node->parent->key, direction == 1 ? "right" : "left", node->size);
+            else
+                printf("\033[40;37m%-3d\033[0mis %3d's %6s child, size = %3d\n", node->key, node->parent->key, direction == 1 ? "right" : "left", node->size);
+        }
         RB_Print(T, node->left, -1);
         RB_Print(T, node->right, 1);
     }
@@ -428,6 +426,7 @@ int main()
     int i;
     char command;
     int k;
+
     scanf("%d", &n);
 
     for (i = 0; i < n; i++)
@@ -440,7 +439,19 @@ int main()
             RB_Delete_Key(T, k);
         else if (command == 'K')
             printf("%d\n", OS_Select(T, k)->key);
-        // RB_Print(T, T->root, 0);
     }
+
+    // while(1)
+    // {
+    //     scanf("%c %d", &command, &k);
+    //     getchar();
+    //     if (command == 'I')
+    //         RB_Insert_Key(T, k);
+    //     else if (command == 'D')
+    //         RB_Delete_Key(T, k);
+    //     else if (command == 'K')
+    //         printf("%d\n", OS_Select(T, k)->key);
+    //     RB_Print(T, T->root, 0);
+    // }
     return 0;
 }
