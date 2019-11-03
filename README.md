@@ -29,6 +29,7 @@
     - [H3-2 考试排名](https://202.38.86.171/problem/H3-2)
     - [H4-1 抽奖](https://202.38.86.171/problem/H4-1)
     - [H4-1 数组排序](https://202.38.86.171/problem/H4-2)
+    - [H6-1 在线比赛](https://202.38.86.171/problem/H6-1)
     - [H6-2 朋友圈](https://202.38.86.171/problem/H6-2)
     - [E1-1 数据库查询v1](https://202.38.86.171/problem/E1-1)
     - [E1-2 股票](https://202.38.86.171/problem/E1-2)
@@ -59,7 +60,7 @@
     - [P1422 小玉家的电费](https://www.luogu.org/problem/P1422)
     - [P1425 小鱼的游泳时间](https://www.luogu.org/problem/P1425)
     - [P1517 小鱼的数字游戏](https://www.luogu.org/problem/P1517)
-    - [P1551 亲戚](https://www.luogu.org/problem/P1551)
+    - [P1551 亲戚](https://www.luogu.org/problem/P1551) (并查集)
     - [P1601 A+B Problem（高精）](https://www.luogu.org/problem/P1601)
     - [P1909 买铅笔](https://www.luogu.org/problem/P1909)
 
