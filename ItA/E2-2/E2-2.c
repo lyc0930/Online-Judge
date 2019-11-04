@@ -53,16 +53,14 @@ int HT_Search(char *S)
 int main()
 {
     int n, k;
-    int i;
     int left = 0, right = 0;
     int hashAddress;
     int count = 0; // 统计相异的字符串个数
     int answer = 0, answer_partial = 1;
     scanf("%d%d", &n, &k);
-    for (i = 0; i < n; i++)
-        scanf("%s", Name[i]);
     for (right = 0; right < n; right++)
     {
+        scanf("%s", Name[right]);
         hashAddress = HT_Insert(Name[right]);
         if (HashTable[hashAddress].times == 1) // 首次插入
             count++;
