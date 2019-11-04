@@ -35,7 +35,8 @@
     - [E1-2 股票](https://202.38.86.171/problem/E1-2)
     - [E1-3 弹幕游戏](https://202.38.86.171/problem/E1-3)
     - [E1-EX 银行卡](https://202.38.86.171/problem/E1-EX)
-
+    - [E2-1 数据库查询v2](https://202.38.86.171/problem/E2-1)
+    
 - [力扣](https://leetcode-cn.com)
     - [第158场周赛](https://leetcode-cn.com/contest/weekly-contest-158)(Problems: 2/4, Points: 7/19, Rank: 492/1715)
 
