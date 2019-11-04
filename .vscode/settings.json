@@ -1,4 +1,7 @@
 {
     "editor.fontFamily": "Cascadia code, 微软雅黑",
-    "editor.fontLigatures": true
+    "editor.fontLigatures": true,
+    "cSpell.words": [
+        "bkdr"
+    ]
 }
