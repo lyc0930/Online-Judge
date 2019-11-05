@@ -401,6 +401,10 @@ Node *OS_Select(Tree *T, int i)
     return node;
 }
 
+/*
+    打印红黑树T中结点node的子树，direction表示node是其父结点的：
+    左孩子：-1，右孩子：1
+*/
 void RB_Print(Tree *T, Node *node, int direction)
 {
     if (node != T->nil)
