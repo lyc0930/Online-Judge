@@ -13,8 +13,7 @@ struct DangerousRelation
     int i;
     int j;
     int alpha;
-} Edge[M + 1];
-
+} Relation[M + 1];
 int Parent[N + 1];
 
 int Compare(const DangerousRelation &x, const DangerousRelation &y)
@@ -31,52 +30,61 @@ int Find_Set(int x)
 
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
     int n, m;
-    int components = 0, edges = 0;
-    int maxDanger = 0;
-    bool Component[N + 1];
+    int components = 0, queue = 0;
+    int maxIndividualDanger = 0;
+
     cin >> n >> m;
     for (int i = 0; i < m; i++)
     {
-        cin >> Edge[edges].i >> Edge[edges].j >> Edge[edges].alpha;
-        if (Edge[edges].i != Edge[edges].j)
+        cin >> Relation[queue].i >> Relation[queue].j >> Relation[queue].alpha;
+        if (Relation[queue].i != Relation[queue].j)
         {
-            if (!Component[Edge[edges].i])
+            if (Parent[Relation[queue].i]==0)
             {
-                Component[Edge[edges].i] = true;
+                Parent[Relation[queue].i] = Relation[queue].i;
                 components++;
             }
-            if (!Component[Edge[edges].j])
+            if (Parent[Relation[queue].j]==0)
             {
-                Component[Edge[edges].j] = true;
+                Parent[Relation[queue].j] = Relation[queue].j;
                 components++;
             }
-            edges++; // |E|++
+            queue++; // |E|++
         }
         else // Individual Dangerous
         {
-            if (Edge[edges].alpha > maxDanger)
-                maxDanger = Edge[edges].alpha;
+            if (Relation[queue].alpha > maxIndividualDanger)
+                maxIndividualDanger = Relation[queue].alpha;
         }
     }
-    sort(Edge, Edge + edges, Compare);
-    for (int i = 0; i <= n; i++)
-        Parent[i] = i;
-    for (edges -= 1; edges >= 0; edges--)
+
+    sort(Relation, Relation + queue, Compare);
+
+    // for (int i = 0; i <= n; i++)
+    //     Parent[i] = i;
+
+    for (queue -= 1; queue >= 0; queue--) // Add edges
     {
-        int set_i = Find_Set(Edge[edges].i);
-        int set_j = Find_Set(Edge[edges].j);
+        int set_i = Find_Set(Relation[queue].i);
+        int set_j = Find_Set(Relation[queue].j);
         if (set_i != set_j)
         {
             Parent[set_i] = set_j;
             components--;
         }
+        // cout << Relation[queue].i << ' ' << Relation[queue].j << ' ' << Relation[queue].alpha << endl;
+        // cout << "queue: " << queue << endl;
+        // cout << "components: " << components << endl;
         if (components <= 1)
             break;
     }
+    // cout << Relation[queue + 1].i << ' ' << Relation[queue + 1].j << ' ' << Relation[queue + 1].alpha << endl;
     if (components <= 1)
-        cout << ((Edge[edges + 1].alpha > maxDanger) ? Edge[edges + 1].alpha : maxDanger);
+        cout << ((Relation[queue + 1].alpha > maxIndividualDanger) ? Relation[queue + 1].alpha : maxIndividualDanger);
     else
-        cout << maxDanger;
+        cout << maxIndividualDanger;
     return 0;
 }

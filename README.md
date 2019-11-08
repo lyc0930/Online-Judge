@@ -36,7 +36,9 @@
     - [E1-3 弹幕游戏](https://202.38.86.171/problem/E1-3)
     - [E1-EX 银行卡](https://202.38.86.171/problem/E1-EX)
     - [E2-1 数据库查询v2](https://202.38.86.171/problem/E2-1)
-    
+    - [E2-2 军训排队](https://202.38.86.171/problem/E2-2)
+    - [E2-3 内存分配](https://202.38.86.171/problem/E2-3)
+    - [E3-2 归并排序](https://202.38.86.171/problem/E3-2)
 - [力扣](https://leetcode-cn.com)
     - [第158场周赛](https://leetcode-cn.com/contest/weekly-contest-158)(Problems: 2/4, Points: 7/19, Rank: 492/1715)
 
@@ -64,4 +66,5 @@
     - [P1551 亲戚](https://www.luogu.org/problem/P1551) (并查集)
     - [P1601 A+B Problem（高精）](https://www.luogu.org/problem/P1601)
     - [P1909 买铅笔](https://www.luogu.org/problem/P1909)
+    - [P5569 石子合并](https://www.luogu.org/problem/P5569)
 
