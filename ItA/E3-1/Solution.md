@@ -25,10 +25,35 @@ $0 < x_i,\,y_i \leq 100000$
 
 # 解题报告
 ## 初始思路
-可以认为这是一道**最长“偏序$\leq$”子序列**的题目，类比最长不下降子序列，对于整点类型`Point`，重载操作符`<=`与`>`，记$F_i$表示偏序$\leq$子序列长度为$i$时的**序列尾端元素**，给出状态转移方程
+可以认为这是一道**最长“偏序$\leq$”子序列**的题目，类比最长不下降子序列，对于整点类型`Point`，重载操作符`<=`与`>`。
+```c++
+struct point
+{
+    int x;
+    int y;
+    bool operator<=(const point b) const
+    {
+        return (this->x <= b.x) && (this->y <= b.y);
+    }
+    bool operator<(const point b) const
+    {
+        return (this->x < b.x) && (this->y < b.y);
+    }
+    bool operator>=(const point b) const
+    {
+        return (this->x >= b.x) && (this->y >= b.y);
+    }
+    bool operator>(const point b) const
+    {
+        return (this->x > b.x) && (this->y > b.y);
+    }
+} Point[N + 1], F[N + 1];
+```
+
+记$F_i$表示偏序$\leq$子序列长度为$i$时的**序列尾端元素**，给出状态转移方程
 
 $$
-F_i = \max{ \{ Point_i | F_j < Point_i ,\quad j = 1 ,\, \cdots ,\, i -1 \}}
+F_i = \max{ \{ Point_i | F_j < Point_i ,\quad j = 1 ,\, \cdots ,\, i - 1 \}}
 $$
 
 最终$F$的末尾元素对应下标即为最大子集大小。
