@@ -13,30 +13,30 @@ struct point
 {
     int x;
     int y;
-    bool operator==(const point b) const
-    {
-        return (this->x == b.x) && (this->y == b.y);
-    }
-    bool operator!=(const point b) const
-    {
-        return (this->x != b.x) || (this->y != b.y);
-    }
-    bool operator<=(const point b) const
-    {
-        return (this->x <= b.x) && (this->y <= b.y);
-    }
+    // bool operator==(const point b) const
+    // {
+    //     return (this->x == b.x) && (this->y == b.y);
+    // }
+    // bool operator!=(const point b) const
+    // {
+    //     return (this->x != b.x) || (this->y != b.y);
+    // }
+    // bool operator<=(const point b) const
+    // {
+    //     return (this->x <= b.x) && (this->y <= b.y);
+    // }
     bool operator<(const point b) const
     {
-        return (this->x < b.x) && (this->y < b.y);
+        return (this->x < b.x) || (this->y < b.y); // || 无法通过OJ
     }
     bool operator>=(const point b) const
     {
         return (this->x >= b.x) && (this->y >= b.y);
     }
-    bool operator>(const point b) const
-    {
-        return (this->x > b.x) && (this->y > b.y);
-    }
+    // bool operator>(const point b) const
+    // {
+    //     return (this->x > b.x) && (this->y > b.y);
+    // }
 } Point[N + 1], F[N + 1];
 
 int main()
@@ -54,11 +54,22 @@ int main()
     for (int i = 0; i < n; i++)
     {
         cin >> Point[i].x >> Point[i].y;
-        if (Point[i] > F[index])
+        if (Point[i] >= F[index])
             F[++index] = Point[i];
         else
             *lower_bound(F + 1, F + index + 1, Point[i]) = Point[i];
+        // for (int i = 0; i <= n; i++)
+        //     cout << '(' << F[i].x << ',' << F[i].y << ')' << ' ';
+        // cout << endl;
     }
     cout << index;
     return 0;
 }
+
+/*
+    坏例
+    3
+    3 3
+    1 5
+    4 4
+*/
