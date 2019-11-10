@@ -32,7 +32,33 @@ $0 < a_i \leq b_i \leq 2^30$
 
 # 解题报告
 ## 初始思路
-这道题是较为标准的区间树或线段树的题目，考虑以CLRS算法导论的区间树扩张方法，在红黑树的基础上实现区间树，为每个结点增加区间域`interval`和子树最大端点`max`，在向下查找和左右旋的操作中维护`max`的值。在本题中，对于每一个内存申请的区间，先查询区间树中是否存在与之重叠的结点，若不存在则将其插入树中。
+这道题是较为标准的区间树或线段树的题目，考虑以CLRS算法导论的区间树扩张方法，在红黑树的基础上实现区间树，为每个结点增加区间域`interval`和子树最大端点`max`：
+```c
+typedef struct Interval
+{
+    int low;
+    int high;
+} Interval;
+```
+```c
+// 区间树的节点
+typedef struct IntervalTreeNode
+{
+    enum Color color;
+    Interval interval;
+    int max;
+    struct IntervalTreeNode *left;
+    struct IntervalTreeNode *right;
+    struct IntervalTreeNode *parent;
+} Node;
+```
+在向下查找和左右旋的操作中维护`max`的值。在本题中，对于每一个内存申请的区间，先查询区间树中是否存在与之重叠的结点，若不存在则将其插入树中。
+```c
+int Overlap(Interval i, Interval j)
+{
+    return (i.low <= j.high && j.low <= i.high);
+}
+```
 
 ## 提交与修改过程
 初次提交[PA](https://202.38.86.171/status/7532b8f7b1fc1ba8ff1dade89002d842)且仅通过第一个测试点。

@@ -38,11 +38,12 @@
     - [E2-1 数据库查询v2](https://202.38.86.171/problem/E2-1)
     - [E2-2 军训排队](https://202.38.86.171/problem/E2-2)
     - [E2-3 内存分配](https://202.38.86.171/problem/E2-3)
+    - [E2-EX 危险品放置](https://202.38.86.171/problem/E2-EX)
     - [E3-1 偏序关系](https://202.38.86.171/problem/E3-1)
     - [E3-2 归并排序](https://202.38.86.171/problem/E3-2)
     - [E3-3 多重背包](https://202.38.86.171/problem/E3-3)
     - [E3-EX 正方形计数](https://202.38.86.171/problem/E3-EX)
-    
+
 - [力扣](https://leetcode-cn.com)
     - [第158场周赛](https://leetcode-cn.com/contest/weekly-contest-158)(Problems: 2/4, Points: 7/19, Rank: 492/1715)
 
