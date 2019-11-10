@@ -3,6 +3,7 @@
 // 0 < m <= 1000000
 
 #include <algorithm>
+// #include <cstdio> // Debug Output
 #include <iostream>
 #define N 100000
 #define M 1000000
@@ -36,7 +37,10 @@ int Parent[N + 1];
 int Find_Set(int s)
 {
     if (s != Parent[s])
+    {
         Parent[s] = Find_Set(Parent[s]);
+        PolarityReverse[s] ^= PolarityReverse[Parent[s]];
+    }
     return Parent[s];
 }
 
@@ -57,9 +61,7 @@ bool IfPolarityReverse(int s)
     return PolarityReverse[s];
 }
 
-/*
-    返回顶点x的实际极性
-*/
+// 返回顶点x的实际极性
 bool Polarity(int x)
 {
     return (IfPolarityReverse(Node[x].set) ^ Node[x].polarity);
@@ -119,16 +121,16 @@ int main()
             }
             else // j 已被分配
             {
-                Node[Relation[edges].i].set = Set(Relation[edges].j);                 // 放入同一个集合中
-                Node[Relation[edges].i].polarity = !Node[Relation[edges].j].polarity; // 极性相反
+                Node[Relation[edges].i].polarity = !Polarity(Relation[edges].j); // 极性相反
+                Node[Relation[edges].i].set = Set(Relation[edges].j);            // 放入同一个集合中
             }
         }
         else // i 已被分配
         {
             if (Node[Relation[edges].j].set == 0) // j 未被分配
             {
-                Node[Relation[edges].j].set = Set(Relation[edges].i);                 // 放入同一个集合中
-                Node[Relation[edges].j].polarity = !Node[Relation[edges].i].polarity; // 极性相反
+                Node[Relation[edges].j].polarity = !Polarity(Relation[edges].i); // 极性相反
+                Node[Relation[edges].j].set = Set(Relation[edges].i);            // 放入同一个集合中
             }
             else // 两者均已分配
             {
@@ -152,13 +154,13 @@ int main()
                     {
                         if (set_i < set_j) // 向小合并（并不是按秩合并）
                         {
-                            PolarityReverse[Node[Relation[edges].j].set] ^= 1; // 集合j中的极性全部翻转
-                            Parent[set_j] = set_i;                             // 将所在集合j向i所在集合合并
+                            PolarityReverse[set_j] ^= 1; // 集合j中的极性全部翻转
+                            Parent[set_j] = set_i;       // 将所在集合j向i所在集合合并
                         }
                         else // 将所在集合j向i所在集合合并
                         {
-                            PolarityReverse[Node[Relation[edges].i].set] ^= 1; // 集合i中的极性全部翻转
-                            Parent[set_i] = set_j;                             // 将所在集合i向j所在集合合并
+                            PolarityReverse[set_i] ^= 1; // 集合i中的极性全部翻转
+                            Parent[set_i] = set_j;       // 将所在集合i向j所在集合合并
                         }
                     }
                     else // 极性相反
@@ -171,6 +173,10 @@ int main()
                 }
             }
         }
+
+        // for (int i = 1; i <= n; i++)                                           // Debug Output
+        // printf("%-2d , ", i);                                              // Debug Output
+        // cout << endl;                                                          // Debug Output
         // for (int i = 1; i <= n; i++)                                           // Debug Output
         // cout << (char)(Set(i) + 64) << ' ' << (bool)(Polarity(i)) << ", "; // Debug Output
         // cout << endl;                                                          // Debug Output
