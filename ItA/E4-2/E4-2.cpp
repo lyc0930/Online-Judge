@@ -60,35 +60,36 @@ int main()
     */
     priority_queue<job, vector<job>, greater<job>> JobQueue;
     JobQueue.push(Job[0]);
-    cout << "Job 0  : " << Job[0].arrival << ',' << Job[0].burst << endl; // Debug Output
     for (int i = 1; i < n; i++)
     {
-        cout << "Job " << i << "  : " << Job[i].arrival << ',' << Job[i].burst << endl; // Debug Output
-        job current = JobQueue.top();                                                 // 当前执行的任务
+        job current = JobQueue.top(); // 当前执行的任务
         JobQueue.pop();
-        cout << "current: " << current.arrival << ',' << current.burst << ',' << current.remain << endl; // Debug Output
-        if (current.remain <= Job[i].arrival - Job[i - 1].arrival)                                     // 在任务到达之前，当前任务就可以完成
+        int timeInterval = Job[i].arrival - Job[i - 1].arrival; // 两次任务到达时的间隔时间
+        while (current.remain <= timeInterval)                  // 在任务到达之前，当前任务就可以完成
         {
-            responseTime += Job[i - 1].arrival + current.remain - current.arrival; // Job[i - 1].arrival + current.remain 是当前任务的完成时间
-
-            cout << responseTime << endl;                                          // Debug Output
+            responseTime += Job[i].arrival - timeInterval + current.remain - current.arrival; // Job[i].arrival - timeInterval + current.remain 是当前任务的完成时间
+            timeInterval -= current.remain;                                                   // 工作时间
+            current.remain = 0;
+            if (JobQueue.empty())
+                break;
+            else
+            {
+                current = JobQueue.top(); // 当前执行的任务
+                JobQueue.pop();
+            }
         }
-        else // 任务到达之后，仍然无法完成
-        {
-            current.remain -= Job[i].arrival - Job[i - 1].arrival; // 剩余时间减少
-            JobQueue.push(current);                                // 重新入队
-        }
-        JobQueue.push(Job[i]); // 到达任务入队
+        current.remain -= timeInterval; // 剩余时间减少
+        if (current.remain > 0)
+            JobQueue.push(current); // 重新入队
+        JobQueue.push(Job[i]);      // 到达任务入队
     }
     int time = Job[n - 1].arrival; // 最后一个任务的到达时刻，用于计算队列内剩余任务的响应时间
     while (!JobQueue.empty())
     {
         job current = JobQueue.top(); // 当前执行的任务
         JobQueue.pop();
-        cout << current.arrival << ',' << current.burst << ',' << current.remain << endl; // Debug Output
         responseTime += time + current.remain - current.arrival;
         time += current.remain;
-        cout << responseTime << endl; // Debug Output
     }
     cout << responseTime;
     return 0;

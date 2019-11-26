@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 #include <iostream>
-#define N 10
-#define R 10
-#define P 10
+#define N 1000
+#define R 1000
+#define P 1000
 // 100000 10000000 1000
 using namespace std;
 
