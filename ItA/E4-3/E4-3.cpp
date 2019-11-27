@@ -40,18 +40,18 @@ int main()
     cin >> n >> k;
     for (int i = 0; i < n; i++)
     {
-        cin >> Query_undiscretized[i];
-        Query[i] = Query_undiscretized[i];
+        cin >> Query[i];
+        // Query[i] = Query_undiscretized[i];
     }
 
     memset(NextQueryOf, N + 1, sizeof(NextQueryOf)); // 下一次访问在无穷远处
 
     // 离散化，并从后向前建立访问
-    sort(Query_undiscretized, Query_undiscretized + n);
-    int size = unique(Query_undiscretized, Query_undiscretized + n) - Query_undiscretized;
+    // sort(Query_undiscretized, Query_undiscretized + n);
+    // int size = unique(Query_undiscretized, Query_undiscretized + n) - Query_undiscretized;
     for (int i = n - 1; i >= 0; i--)
     {
-        Query[i] = lower_bound(Query_undiscretized, Query_undiscretized + size, Query[i]) - Query_undiscretized; // 离散化
+        // Query[i] = lower_bound(Query_undiscretized, Query_undiscretized + size, Query[i]) - Query_undiscretized; // 离散化
         NextSameQuery[i] = NextQueryOf[Query[i]];
         NextQueryOf[Query[i]] = i;
     }
@@ -72,16 +72,7 @@ int main()
             IfCached[Query[i]] = true; // 此次访问加入缓存 1
         }
         else // 访问的数据已被缓存
-        {
-            /*
-                需要更新已缓存内存的下次访问时间，但修改优先队列中的元素属性较为困难
-                由于对于此内存的NextQuery一定是不断增加的，即
-                    NextQueryOf本次访问的内存 >= NextSameQuery上次对此内存访问 = 本次访问
-                因此对同一个内存地址的访问重复入队不影响优先队列的出队顺序，进而对贪心结果没有影响。
-                需要维护的是将缓存上限虚拟地+1
-            */
             k++;
-        }
         NextQueryOf[Query[i]] = NextSameQuery[NextQueryOf[Query[i]]];
         Cache.push(memory(NextQueryOf[Query[i]], Query[i])); // 此次访问加入缓存 2 或 更新已缓存内存的下次访问时间
     }
