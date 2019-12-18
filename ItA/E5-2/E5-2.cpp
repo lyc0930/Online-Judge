@@ -8,6 +8,7 @@
 
 using namespace std;
 
+// 链式前向星
 struct edge
 {
     int to;       // 终点
@@ -15,7 +16,7 @@ struct edge
     int nextEdge; // 下一条相同起点边的下标
 } Edge[M];        // 边
 
-int FirstEdgeFrom[N]; // 以结点作为起点的边的下标
+int First_Edge_from[N]; // 以结点作为起点的边的下标
 int Distance[N];      // s到结点的距离
 bool IfVisited[N];
 
@@ -50,8 +51,8 @@ int main()
         cin >> u >> v >> w;
         Edge[i].length = w;
         Edge[i].to = v;
-        Edge[i].nextEdge = FirstEdgeFrom[u]; // 下一条以u为起点的边
-        FirstEdgeFrom[u] = i;                // 更新以u为起点的边
+        Edge[i].nextEdge = First_Edge_from[u]; // 下一条以u为起点的边
+        First_Edge_from[u] = i;                // 更新以u为起点的边
     }
 
     Distance[s] = 0;
@@ -63,7 +64,7 @@ int main()
         if (IfVisited[x]) // 已被访问过
             continue;
         IfVisited[x] = true;
-        for (int i = FirstEdgeFrom[x]; i != 0; i = Edge[i].nextEdge) // 遍历以x为起点的边
+        for (int i = First_Edge_from[x]; i != 0; i = Edge[i].nextEdge) // 遍历以x为起点的边
         {
             int y = Edge[i].to; // 边的终点
             if (Distance[y] > Distance[x] + Edge[i].length)
