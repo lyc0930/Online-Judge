@@ -21,7 +21,7 @@
     - [4151 电影节](http://bailian.openjudge.cn/practice/4151)
     - [4152 最佳加法表达式](http://bailian.openjudge.cn/practice/4152)
 
-- [USTC算法基础课程OJ](https://202.38.86.171/)(Updating...)
+- [USTC2019Fall 算法基础课程OJ](https://202.38.86.171/)(The course has ended.)
     - [1](https://github.com/lyc0930/Online-Judge/tree/master/ItA/1)    [a + b problem](https://202.38.86.171/problem/1)
     - [3](https://github.com/lyc0930/Online-Judge/tree/master/ItA/3)    [数组排序1](https://202.38.86.171/problem/3)
     - [4](https://github.com/lyc0930/Online-Judge/tree/master/ItA/4)    [数组排序2](https://202.38.86.171/problem/4)
@@ -47,6 +47,11 @@
     - [E4-2](https://github.com/lyc0930/Online-Judge/tree/master/ItA/E4-2)  [任务调度](https://202.38.86.171/problem/E4-2)
     - [E4-3](https://github.com/lyc0930/Online-Judge/tree/master/ItA/E4-3)  [数据缓存](https://202.38.86.171/problem/E4-3)
     - [E4-EX](https://github.com/lyc0930/Online-Judge/tree/master/ItA/E4-EX) [晾衣服](https://202.38.86.171/problem/E4-EX)
+    - [E5-1](https://github.com/lyc0930/Online-Judge/tree/master/ItA/E5-1)  [道路规划](https://202.38.86.171/problem/E5-1)
+    - [E5-2](https://github.com/lyc0930/Online-Judge/tree/master/ItA/E5-2)  [逃离迷宫](https://202.38.86.171/problem/E5-2)
+    - [E5-3](https://github.com/lyc0930/Online-Judge/tree/master/ItA/E5-3)  [货物运输](https://202.38.86.171/problem/E5-3)
+    - [E5-EX](https://github.com/lyc0930/Online-Judge/tree/master/ItA/E5-EX) [图中最大的集合](https://202.38.86.171/problem/E5-EX)
+    - [E6-1](https://github.com/lyc0930/Online-Judge/tree/master/ItA/E6-1)  [字符串匹配](https://202.38.86.171/problem/E6-1)
 
 - [力扣](https://leetcode-cn.com)
     - [第158场周赛](https://leetcode-cn.com/contest/weekly-contest-158)(Problems: 2/4, Points: 7/19, Rank: 492/1715)
