@@ -19,7 +19,7 @@ struct edge
     {
     }
 };
-vector<edge> Edge_from[N];           // 相同起点的边
+vector<edge> Edges_from[N];           // 相同起点的边
 vector<int> Nodes_with_Height_of[N]; // 具有同一高度的结点
 list<int> _Nodes_with_Height_of[N];  // 具有同一高度的结点，加速插入删除
 vector<int> Height;                  // 结点的高度
@@ -54,9 +54,9 @@ void Relabel()
     for (int head = 0; head < rear; head++)
     {
         int u = Queue[head];
-        for (vector<edge>::iterator i = Edge_from[u].begin(); i != Edge_from[u].end(); i++)
+        for (vector<edge>::iterator i = Edges_from[u].begin(); i != Edges_from[u].end(); i++)
         {
-            if (Height[i->to] == n + 1 && Edge_from[i->to][i->nextEdge].capacity > 0)
+            if (Height[i->to] == n + 1 && Edges_from[i->to][i->nextEdge].capacity > 0)
             {
                 Height[i->to] = Height[u] + 1;
                 Gap[Height[i->to]]++;
@@ -83,13 +83,13 @@ void Relabel()
 }
 
 /*
-    将结点u存储的超额流向后向边推送
+    将结点u存储的超额流向关联边e推送
 */
 void Push_to_Edge(int u, edge &e)
 {
     int flow = min(ExcessFlow[u], e.capacity);
     e.capacity -= flow;
-    Edge_from[e.to][e.nextEdge].capacity += flow;
+    Edges_from[e.to][e.nextEdge].capacity += flow;
     ExcessFlow[u] -= flow;
     ExcessFlow[e.to] += flow;
     if (0 < ExcessFlow[e.to] && ExcessFlow[e.to] <= flow)
@@ -103,7 +103,7 @@ void Push_to_Edge(int u, edge &e)
 void Push(int u)
 {
     int newHeight = n + 1;
-    for (vector<edge>::iterator i = Edge_from[u].begin(); i != Edge_from[u].end(); i++)
+    for (vector<edge>::iterator i = Edges_from[u].begin(); i != Edges_from[u].end(); i++)
     {
         if (i->capacity > 0)
         {
@@ -156,8 +156,8 @@ int main()
     {
         int u, v, l;
         cin >> u >> v >> l;
-        Edge_from[u].push_back(edge(v, l, Edge_from[v].size()));     // 添加从u到v容量为l的有向边
-        Edge_from[v].push_back(edge(u, 0, Edge_from[u].size() - 1)); // 添加从v到u容量为0的反向边
+        Edges_from[u].push_back(edge(v, l, Edges_from[v].size()));     // 添加从u到v容量为l的有向边
+        Edges_from[v].push_back(edge(u, 0, Edges_from[u].size() - 1)); // 添加从v到u容量为0的反向边
     }
     int maxFlow;
     if (s == t)
@@ -179,8 +179,8 @@ int main()
         ExcessFlow.assign(n + 1, 0);
         ExcessFlow[s] = INT_MAX;
         ExcessFlow[t] = -INT_MAX; // 防止溢出
-        for (int i = 0; i < (int)Edge_from[s].size(); i++)
-            Push_to_Edge(s, Edge_from[s][i]);
+        for (int i = 0; i < (int)Edges_from[s].size(); i++)
+            Push_to_Edge(s, Edges_from[s][i]);
         Relabel(); // 重贴标签
         for (int u; nowHeight >= 0;)
         {
